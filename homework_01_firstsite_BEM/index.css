@@ -1,0 +1,156 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-gap: 10px;
+}
+.one {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+.two {
+  grid-column: 2 / 3;
+  grid-row: 2;
+}
+.three {
+  grid-column: 1;
+  grid-row: 2 /4;
+  width: 200px;
+}
+.four {
+  grid-column: 2;
+  grid-row: 3;
+}
+.five {
+  grid-column: 1/3;
+  grid-row: 4;
+}
+.six {
+  grid-column: 1/3;
+  grid-row: 4;
+}
+
+.tab_selector {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: minmax(150px, auto);
+}
+
+.tab_selector_card {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(250px, auto);
+}
+
+.tab_selector__block {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px;
+}
+
+.tab_selector__image {
+  max-height: 150px;
+  border-radius: 12px;
+  margin-right: 20px;
+}
+
+.tab_selector__item {
+  background: #fefefe;
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.tab_selector__item_flex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button_select {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  background-color: cadetblue;
+  padding:20px
+}
+
+.tab_selector__context {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+button {
+  border-radius: 12px;
+  background-color: #eded;
+  padding: 7px;
+  border-color: red;
+  color: red;
+  font-weight: 900;
+  padding-left: 18px;
+  padding-right: 18px;
+  font-size: 14px;
+}
+
+body {
+  background: #dedede;
+}
+
+img {
+  max-height: 150px;
+  border-radius: 12px;
+  margin-right: 20px;
+}
+
+p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+
+input{
+  border-radius: 6px;
+  margin-right: 12px;
+}
+
+.card_text__title {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 15px;
+}
+
+.card_text__desc {
+  font-size: 20px;
+  font-weight: 300;
+  padding: 15px;
+}
+
+.select_block{
+  padding: 15px;
+  border-radius: 12px;
+  background-color: azure;
+  margin-bottom: 14px;
+}
+
+.second_text_select{
+  font-size: 12px;
+}
+
+.main__block{
+  margin: 20px;
+  margin-right: 10px;
+  display:flex;
+  align-items: center;
+
+}
