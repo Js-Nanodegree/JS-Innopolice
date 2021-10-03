@@ -1,14 +1,19 @@
-.tab_selector {
-  display: grid;
-  grid-gap: 15px;
-  grid-template-columns: 1fr 1fr 1fr;
+@media (min-width: 600px) {
+  .tab_selector {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr;
+    flex-direction: column;
+  }
 }
 
-.tab_selector_card {
-  display: grid;
-  grid-gap: 25px;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: minmax(250px, auto);
+@media (min-width: 600px) {
+  .tab_selector_card {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(250px, auto);
+  }
 }
 
 .tab_selector__block {
@@ -30,6 +35,8 @@
   -webkit-box-shadow: -3px 3px 30px 15.5px #ddd;
   -moz-box-shadow: -3px 3px 30px 15.5px #ddd;
   box-shadow: -3px 3px 30px 15.5px #ddd;
+
+  margin-bottom: 10px;
 }
 
 .tab_selector__item {
@@ -41,6 +48,8 @@
   -webkit-box-shadow: -3px 3px 30px 15.5px #ddd;
   -moz-box-shadow: -3px 3px 30px 15.5px #ddd;
   box-shadow: -3px 3px 30px 15.5px #ddd;
+
+  margin-bottom: 10px;
 }
 
 .tab_selector__item_flex {
