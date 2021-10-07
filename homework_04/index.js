@@ -1,35 +1,33 @@
 "use strict";
-const index = [0, 1, 2, 3, 4, 5, 6];
+const index = [0, 1, 2, 3, 4, 5, 6, 7];
 
 const ctx = [
   {
     index: 1,
     initial: { str1: "12/22/2000 12-00", str2: "12/22/2000 12-00" },
     text: `
-  1. Пользователь вводит строку,
-  затем число(кол - во символов).
-  Функция усекает строку до кол - ва символов
-  и добавляет многоточие.
+  1. . Написать скрипт, 
+  предлогающий пользователю ввести две строки через запятую. 
+  Вывести сообщение true, если вторая строка содержится в первый, 
+  в противном случае false, 
+  регистр при проверке не учитывать.
   `,
     input: [
       {
         id: 1,
         name: "str1",
       },
-      {
-        id: 2,
-        name: "str2",
-      },
     ],
     result(state) {
-      let str1 = state.str1 || "";
-      let str2 = state.str2 || "";
+      const data = state.str1.split(",");
+      let str1 = data[0] || "";
+      let str2 = data[1] || "";
 
       if (str1 == "") {
-        return false;
+        return false.toString();
       }
       if (str2 == "") {
-        return false;
+        return false.toString();
       }
 
       return str2.includes(str1).toString();
@@ -40,24 +38,22 @@ const ctx = [
     initial: { date: "12/22/2000 12-00", numeric: "5" },
     num: 4,
     text: `
-  2. Пользователь вводит строку,
-  затем число(кол - во символов).
-  Функция усекает строку до кол - ва символов
-  и добавляет многоточие.
+  2.  Пользователь вводит строку, 
+  затем число (кол-во символов). 
+  Функция усекает строку до кол-ва 
+  символов и добавляет многоточие.
   `,
     input: [
       {
         id: 1,
         name: "date",
       },
-      {
-        id: 2,
-        name: "numeric",
-      },
     ],
     result(state) {
       const result = state.date;
-      const num = Number(state.numeric);
+      const data = state.date.split(" ");
+
+      const num = Number(data[1]);
       if (!Number(num)) return result;
       if (result.length < Number(num)) {
         return result.substring(0, result.length) + "...";
@@ -71,9 +67,12 @@ const ctx = [
     initial: { date: "12/22/2000 12-00", numeric: "5" },
     num: 4,
     text: `
-    4. Написать функцию, преобразующее строку с датой и временем формата
-    '12/02/2021 12-00' в строку формата 12.02.2021 12: 00, используя
-    регулярные выражения
+    /// TODO
+    4. Написать функцию, 
+    преобразующее строку с датой и 
+    временем формата '12/02/2021 12-00' 
+    в строку формата 12.02.2021 12:00, 
+    используя регулярные выражения
   `,
     input: [
       {
@@ -99,46 +98,43 @@ const ctx = [
       if (new Date(result).getDate()) {
         return result;
       }
-      return false;
+      return false.toString();
     },
   },
   {
     index: 5,
-    initial: { last: "Якимов", first: "Вячеслав", middle: "Александрович" },
+    initial: { last: "Якимов Вячеслав Googleвич" },
     text: `
-    5. Написать функцию,
-валидирующую ФИО из кирилличиских символов
-(считать, что отчество может оканчиваться только на "вна" или "вич"
-или поле отчества может отсутствовать)
+    5. Написать функцию, валидирующую ФИО 
+    из кирилличиских символов 
+    (считать, что отчество может оканчиваться только 
+    на "вна" или "вич" или может отсутствовать)
   `,
     input: [
       {
         id: 1,
         name: "last",
       },
-      {
-        id: 2,
-        name: "first",
-      },
-      {
-        id: 3,
-        name: "middle",
-      },
     ],
     result(state) {
-      const middle = state.middle;
+      const split = state.last.split(" ");
+      let middle = split[2] || "";
+      let last = split[0];
+      let first = split[1];
+      console.log(middle);
+
       if (middle == "") {
-        return true;
+        return `${last} ${first}`;
       }
       if (middle.length < 3) {
-        return false;
+        return `${last} ${first}`;
       } else {
         const lastSliceStr = middle.substring(middle.length - 3, middle.length);
 
         if (["вич", "вна"].includes(lastSliceStr)) {
-          return `${state.last} ${state.first} ${state.middle}`;
+          return `${last} ${first} ${middle}`;
         }
-        return `${state.last} ${state.first}`;
+        return `${last} ${first}`;
       }
     },
   },
@@ -175,6 +171,35 @@ const ctx = [
     },
   },
   {
+    index: 6,
+    initial: { numeric: "dsafd2132v123dcs213" },
+    num: 4,
+    text: `
+    // TODO
+    6. На вход даётся многострочная строка,
+    найти и вернуть через alert все html комментарии
+    `,
+    input: [
+      {
+        id: 1,
+        name: "numeric",
+      },
+    ],
+    result(state) {
+      const str = state.numeric || "";
+      let result = "";
+
+      for (let value of str) {
+        if (Number(value)) {
+          result += value.toLowerCase() + ".";
+          // } else {
+          // result += value;
+        }
+      }
+      return result;
+    },
+  },
+  {
     index: 7,
     initial: { numeric: "dsafd2132v123dcs213" },
     num: 4,
@@ -196,8 +221,8 @@ const ctx = [
       for (let value of str) {
         if (Number(value)) {
           result += value.toLowerCase() + ".";
-        } else {
-          result += value;
+          // } else {
+          // result += value;
         }
       }
       return result;
