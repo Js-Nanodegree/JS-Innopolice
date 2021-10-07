@@ -67,3 +67,8 @@
         background: #4776e6;
     }
 }
+
+section{
+    display: flex;
+    min-height: 35rem;
+  }
