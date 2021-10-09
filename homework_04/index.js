@@ -82,23 +82,8 @@ const ctx = [
     ],
     result(state) {
       const date = state.date || "";
-      let result = "";
-      for (let value of date) {
-        if (value == "/") {
-          result += "-";
-        }
-        if (value === "-") {
-          result += ":";
-        }
-        if (value != "/" && value != "-") {
-          result += value;
-        }
-      }
 
-      if (new Date(result).getDate()) {
-        return result;
-      }
-      return false.toString();
+      return date.replace(/-/gi, ":").replace(/\/ /gi, "-");
     },
   },
   {
@@ -144,7 +129,7 @@ const ctx = [
     num: 4,
     text: `
     6. На вход дана строка в PamalCase,
-преобразовать строку в snake_case
+    преобразовать строку в snake_case
   `,
     input: [
       {
@@ -165,35 +150,6 @@ const ctx = [
           } else {
             result += value.toLowerCase();
           }
-        }
-      }
-      return result;
-    },
-  },
-  {
-    index: 6,
-    initial: { numeric: "dsafd2132v123dcs213" },
-    num: 4,
-    text: `
-    // TODO
-    6. На вход даётся многострочная строка,
-    найти и вернуть через alert все html комментарии
-    `,
-    input: [
-      {
-        id: 1,
-        name: "numeric",
-      },
-    ],
-    result(state) {
-      const str = state.numeric || "";
-      let result = "";
-
-      for (let value of str) {
-        if (Number(value)) {
-          result += value.toLowerCase() + ".";
-          // } else {
-          // result += value;
         }
       }
       return result;
@@ -221,11 +177,96 @@ const ctx = [
       for (let value of str) {
         if (Number(value)) {
           result += value.toLowerCase() + ".";
-          // } else {
-          // result += value;
         }
       }
       return result;
+    },
+  },
+  {
+    index: 6,
+    initial: {
+      html: `
+    <body class=" login" data-admin-utc-offset="0">
+    
+    <!-- Container -->
+    <div id="container">
+    
+        
+    <!-- Header -->
+        <div id="header">
+            <div id="branding">
+            
+    <h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+    
+            </div>
+            
+            
+        </div>
+    <!-- END Header -->
+        
+        
+    
+        
+            
+        
+    
+        <!-- Content -->
+        <div id="content" class="colM">
+            
+            
+            
+    
+    
+    
+    
+    <div id="content-main">
+    
+    
+    
+    <form action="/admin/login/?next=/admin/" method="post" id="login-form"><input type="hidden" name="csrfmiddlewaretoken" value="2C1TjdJVO7t0y0QnfF6VVmia7CW5RKCtUIrvxcHdo3DtLUCznx6wffPriVahTXwh">
+      <div class="form-row">
+        
+        <label class="required" for="id_username">Username:</label> <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+      </div>
+      <div class="form-row">
+        
+        <label class="required" for="id_password">Password:</label> <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+        <input type="hidden" name="next" value="/admin/">
+      </div>
+      
+      
+      <div class="submit-row">
+        <label>&nbsp;</label><input type="submit" value="Log in">
+      </div>
+    </form>
+    
+    </div>
+    
+            
+            <br class="clear">
+        </div>
+        <!-- END Content -->
+    
+        <div id="footer"></div>
+    </div>
+    <!-- END Container -->
+    
+    
+    
+    </body>`,
+    },
+    text: `
+    6. На вход даётся многострочная строка,
+    найти и вернуть через alert все html комментарии
+    `,
+    input: [
+      {
+        id: 1,
+        name: "html",
+      },
+    ],
+    result(state) {
+      return state.html.match(/<!-- (.*?) -->/gs).toString();
     },
   },
   {
