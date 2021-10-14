@@ -32,7 +32,7 @@ console.log(
 // 5. На вход поступает массив с числами, вывести среднее арифметическое элементов массива.
 console.log(
   data.reduce((previousValue, currentValue) => previousValue + currentValue) /
-    data.length
+  data.length
 );
 
 // 6. Создать функцию-конструктор для объекта "калькулятор",
@@ -149,14 +149,14 @@ console.log(strArr(str[0]) === strArr(str[1], true));
 // через запятую (считать, что значением ключа объекта не может быть объектом или массивом, содержащими объекты) 
 //сама функция в консоль выводиться не должна.
 const data = [1, 2, 3, 5, 6, 4, 3, 2];
-let dad = [];
+let object = [];
+let subJect = [];
 
 data.forEach((a, index) => {
-  dad.push([index, a]);
+  object.push([index, a]);
+  subJect[index] = { value: [index, a] }
 });
-console.log(dad);
-
-
+console.log(object);
 
 // 11. Создать функцию-конструктор для объекта, содержащего методы serProp (установить значение свойства), 
 // метод принимает ключь (строка), значение (произвольное) и объект со свойствами writable, configurable, 
