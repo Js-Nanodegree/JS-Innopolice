@@ -18,48 +18,73 @@
 // Выполнить то же самое использую функции конструкторы.
 // Выполнить то же самое, используя классы.
 
-class SelectConstAnim {
-  constructor(nickname, animal) {
-    this._animal = animal;
-    this._nickname = nickname;
-  }
+const Init = {
+  _nickname: "Slava",
   rename(input) {
     if (/[а-яА-ЯёЁ0-9]+ */g.test(input)) {
       return (this._nickname = input);
     }
-  }
+  },
   _eat() {
     return `${this._nickname} ест`;
-  }
-  _say() {
-    switch (this.animal) {
-      case "cat":
-        return "Mяу - Mяу";
-      case "dog":
-        return "Гав - Гав";
-      case "parot":
-        return "Цыф - цыф";
-      default:
-        return;
-    }
-  }
-  _hunt() {
-    if (this.animal === "cat") {
-      return `${this._nickname} охотиться`;
-    }
-  }
-  main() {
+  },
+  init() {
     let data = [];
     data.push(this._eat());
-    this._say() && data.push("животное говорит " + this._say());
-    this._hunt() && data.push(this._hunt());
 
     return data;
-  }
-}
+  },
+};
 
-const init_Cat = new SelectConstAnim("Slava", "dog");
+const Cat = {
+  proto: Init,
+  _say() {
+    return "кошка мяучит: Mяу - Mяу";
+  },
+  _hunt() {
+    return `${this.proto._nickname} охотиться`;
+  },
+  init() {
+    let data = [];
+    data.push(this._say());
+    data.push(this.proto._eat());
+    data.push(this._hunt());
+    return data;
+  },
+};
 
-init_Cat.rename("Уфыв");
+const Dog = {
+  proto: Init,
+  _say() {
+    return "собака лает: Гав - Гав";
+  },
+  init() {
+    let data = [];
+    data.push(this._say());
+    data.push(this.proto._eat());
+    return data;
+  },
+};
 
-console.log(init_Cat.main());
+const Parrot = {
+  proto: Init,
+  _say() {
+    return "попугай шебечет: Попка-дурак";
+  },
+  init() {
+    let data = [];
+    data.push("Попугай по имени " + this.proto._nickname);
+    data.push(this._say());
+    return data;
+  },
+};
+
+console.log(Parrot.init());
+console.log(Dog.init());
+console.log(Cat.init());
+console.log(Parrot.proto.rename("Сдфава123 в"));
+console.log(Dog.proto.rename("Сдфава123 в"));
+console.log(Cat.proto.rename("Сдфава123 в"));
+console.log(Parrot.init());
+console.log(Dog.init());
+console.log(Cat.init());
