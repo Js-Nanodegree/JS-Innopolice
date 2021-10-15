@@ -1,0 +1,44 @@
+.tab_select_small_card:hover {
+  background: #a0e9ff;
+  background: -webkit-linear-gradient(
+    195deg,
+    #a0e9ff 0%,
+    rgba(165, 215, 227, 0.56) 50%,
+    #c6f5ff 100%
+  );
+  background: linear-gradient(
+    195deg,
+    #a0e9ff 0%,
+    rgba(165, 215, 227, 0.56) 50%,
+    #c6f5ff 100%
+  );
+  -webkit-box-shadow: -3px 3px 30px 15.5px rgba(255, 221, 92, 0.24);
+  -moz-box-shadow: -3px 3px 30px 15.5px rgba(255, 221, 92, 0.24);
+  box-shadow: -3px 3px 30px 15.5px rgba(255, 221, 92, 0.24);
+}
+
+.tab_selector__item:hover {
+  background: #a0e9ff;
+  background: -webkit-linear-gradient(
+    195deg,
+    #a0e9ff 0%,
+    rgba(165, 215, 227, 0.56) 50%,
+    #c6f5ff 100%
+  );
+  background: linear-gradient(
+    195deg,
+    #a0e9ff 0%,
+    rgba(165, 215, 227, 0.56) 50%,
+    #c6f5ff 100%
+  );
+  -webkit-box-shadow: -3px 3px 30px 15.5px rgba(255, 221, 92, 0.24);
+  -moz-box-shadow: -3px 3px 30px 15.5px rgba(255, 221, 92, 0.24);
+  box-shadow: -3px 3px 30px 15.5px rgba(255, 221, 92, 0.24);
+}
+
+button:hover {
+  background: #f09819;
+  color: darkblue;
+  background: -webkit-linear-gradient(125deg, #f09819 0%, #edde5d 100%);
+  background: linear-gradient(125deg, #f09819 0%, #edde5d 100%);
+}
