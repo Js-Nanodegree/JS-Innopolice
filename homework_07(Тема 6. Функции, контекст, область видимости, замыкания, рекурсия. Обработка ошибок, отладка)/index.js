@@ -50,9 +50,38 @@ console.log(fibonacciIndex(12))
 // TODO
 
 
+
 // 3. Разработать рекурсивную функцию, принимающую массив, содержащий массивы из двух элементов, 
 // в каждом из которых первый элемент является строкой, 
 // а второй строкой, числом, логическим значением, объектом, 
 // или таким же массивом. Функция должна преобразовать массив в объект.
-// Пример входного значения:[[“name”: “Anna”], [“age”: 22],[“pets”: [[“dog”: “Faust”],[“cat”: “Balthazar”]]]]
-// Пример возвращаемого объекта:{namee: “Anna”,age: 22,pets: {dog: “Faust”,cat: “Balthazar”}}
+// Пример входного значения:
+// Пример возвращаемого объекта:{name: “Anna”,age: 22,pets: {dog: “Faust”,cat: “Balthazar”}}
+
+const example = [
+    ["name", "Anna"],
+    ["age", "22"],
+    [
+      "pets",
+      [
+        ["dog", "Faust"],
+        ["cat", "Balthazar"],
+        ["fear", "allws"],
+      ],
+    ],
+  ];
+  
+  console.log(
+    example.reduce((a, v) => {
+      const value = (x) => {
+        if (Array.isArray(x)) {
+          return x.reduce((a, v) => {
+            return { ...a, [v[0]]: v[1] };
+          }, {});
+        }
+        return x;
+      };
+      return { ...a, [v[0]]: value(v[1]) };
+    }, {})
+  );
+  
