@@ -1,15 +1,18 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import useTheme from 'src/hooks/useTheme';
+import styled, {ThemeProvider} from 'styled-components';
 
 import Table from './Table';
 
-
 function App() {
+  const {theme} = useTheme();
   return (
-    <Container>
-      <Table/>
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Table />
+      </Container>
+    </ThemeProvider>
   );
 }
 
