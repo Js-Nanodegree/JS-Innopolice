@@ -15,11 +15,9 @@ const useTheme = () => {
   const selectTheme = useSelector<typeColor>((state:any) => state?.theme);
   const dispatch = useDispatch();
 
-  const setMode = (mode: typeColor) => {
+  const setMode = (mode: string) => {
     dispatch(updateGlobalTheme(mode));
   };
-
-  console.log(selectTheme);
 
   useEffect(() => {
     setTheme(configTheme['WHITE']);

@@ -14,7 +14,7 @@ export type typeColor = {
   GRAY: 'GRAY'
 }
 
-export const updateGlobalTheme = (theme: typeColor) => ({
+export const updateGlobalTheme = (theme: string) => ({
   'payload': theme,
   'type': SET_THEME_FONT,
 });
