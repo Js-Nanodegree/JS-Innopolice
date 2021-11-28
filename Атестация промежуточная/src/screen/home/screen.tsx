@@ -6,7 +6,7 @@ import HeaderBlock from 'src/comp/Header';
 
 const Screen=()=>{
   return (
-    <div>
+    <div className="mx-auto">
       <HeaderBlock />
       <FormBlock />
       <FooterBlock />

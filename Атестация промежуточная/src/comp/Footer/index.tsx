@@ -19,12 +19,12 @@ export const text = {
   };
 
   return (
-    <Footer>
-      <div className="footer_name">
-        <span>Delta World @ 1970-2077</span>
+    <Footer className="px-3">
+      <div className="md:flex-none">
+        <span className="font-bold text-base">Delta World @ 1970-2077</span>
       </div>
-      <div className="footer_theme">
-        <span>{theme === 'WHITE' ? text.WHITE : text.BLACK}</span>
+      <div className="">
+        <span className="font-bold text-medium mr-2">{theme === 'WHITE' ? text.WHITE : text.BLACK}</span>
         <Switch checked={theme === 'WHITE'} onChange={onChange} />
       </div>
     </Footer>
