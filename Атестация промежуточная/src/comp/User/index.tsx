@@ -7,12 +7,16 @@ import s from 'src/style';
 import {Navigation} from '../Navigation';
 
 export const User = () => {
-  const [state, setState]=React.useState<any>([]);
+  const [state, setState] = React.useState<any>([]);
 
   React.useEffect(() => {
-    Api.getAllUser().then(({data}:any)=>{
-      setState(data);
-    });
+    try {
+      Api.getAllUser().then(({data}: any) => {
+        setState(data);
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
 
   console.log(state);

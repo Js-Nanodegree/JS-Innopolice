@@ -26,6 +26,7 @@ export interface iAction {
 const text = {
   'Button': 'Редактировать профиль',
   'Client': 'Клиентский профиль',
+  'MyProfile': 'Личный профиль',
 };
 
 const CardProfile = ({
@@ -43,31 +44,12 @@ const CardProfile = ({
     setModal();
   };
 
-  console.log([
-    {
-      'name': 'Дата рождения',
-      'title': date,
-    },
-    {
-      'name': 'Пол',
-      'title': gender,
-    },
-    {
-      'name': 'E-mail',
-      'title': email,
-    },
-    {
-      'name': 'Номер Телефона',
-      'title': phone,
-    },
-  ]);
-
   return (
     <div className={s.profile.wrapper}>
       <div className={s.profile.nameBlock}>
-        <p className={s.profile.main}>{text.Client}</p>
+        <p className={s.profile.main}>{!uuid ? text.Client : text.MyProfile}</p>
         <h2 className={s.profile.title}>{name}</h2>
-        <p className={s.profile.main}>логин - {uuid}</p>
+        {uuid && <p className={s.profile.main}>логин - {uuid}</p>}
       </div>
       <div className={s.profile.col}>
         {[
@@ -103,14 +85,14 @@ const CardProfile = ({
           </div>
         ))}
       </div>
-      <div className="col-start-1 row-start-3 space-y-3 px-4">
+      {uuid && <div className="col-start-1 row-start-3 space-y-3 px-4">
         <div
           className={[s.button.black, 'text-center shadow'].join(' ')}
           onClick={openModal}
         >
           {text.Button}
         </div>
-      </div>
+      </div>}
       <div className={s.profile.imageGroup}>
         <div className={s.profile.gridImage}>
           <div className={s.profile.imageMainWrapper}>

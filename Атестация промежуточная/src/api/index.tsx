@@ -20,7 +20,7 @@ export default {
     }
     return {data};
   },
-  'createPost': async (uuid:string, message:string, title:string, img:any) => {
+  'createPost': async (uuid: string, message: string, title: string, img: any) => {
     const {data, error} = await supabase
       .from(POST)
       .insert([
@@ -32,20 +32,24 @@ export default {
     return {data};
   },
   'getAllPost': async () => {
-    const {data, error} = await supabase
-      .from(POST)
-      .select('*');
+    try {
+      const {data, error} = await supabase
+        .from(POST)
+        .select('*');
 
       if (error) {
         throw new Error(({error}).toString());
       }
 
       return {data};
+    } catch (e) {
+      console.log(e);
+    }
   },
   'getAllUser': async () => {
     const {data, error} = await supabase
-    .from(CLIENT)
-    .select('*');
+      .from(CLIENT)
+      .select('*');
 
     if (error) {
       throw new Error(({error}).toString());
@@ -53,7 +57,7 @@ export default {
 
     return {data};
   },
-  'getCurrentUser': async (uuid:string) => {
+  'getCurrentUser': async (uuid: string) => {
     const {data, error} = await supabase
       .from(CLIENT)
       .select('*')
@@ -64,10 +68,10 @@ export default {
     }
     return {data};
   },
-  'getCurrentUserPost': async (uuid:string) => {
+  'getCurrentUserPost': async (uuid: string) => {
     const {data, error} = await supabase
-    .from(POST)
-    .select('*');
+      .from(POST)
+      .select('*');
 
     if (error) {
       throw new Error(({error}).toString());

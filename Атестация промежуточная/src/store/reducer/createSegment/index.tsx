@@ -1,34 +1,16 @@
-/* eslint-disable import/namespace */
-import {ActionType, Action, State} from './type';
+const SET_CURRENT_USER_SELECT = 'SET_CURRENT_USER_SELECT';
 
-const initialState = {
-  'adventure': [],
-  'brand': [],
-  'coast': '',
-  'magazine': [],
-  'name': '',
-  'period': '',
-  'segment': [],
-};
+export const selectProfileUser = (uuid: string) => ({
+  'payload': uuid,
+  'type': SET_CURRENT_USER_SELECT,
+});
 
-export const createSegment = (state: State = initialState, action: Action): State => {
+const initial = {'uudi': ''};
+
+export const createSegment = (state = initial, action: any) => {
   switch (action.type) {
-    case ActionType.CREATE_SEGMENT_NAME:
-      return {...state, ...action.payload};
-    case ActionType.DESELECT_BRAND_ITEM:
-      return {...state, ...action.payload};
-    case ActionType.SELECT_BRAND_ITEM:
-      return {...state, ...action.payload};
-    case ActionType.CREATE_SEGMENT_COAST:
-      return {...state, ...action.payload};
-    case ActionType.CREATE_SEGMENT_INFERNAL:
-      return {...state, ...action.payload};
-    case ActionType.CREATE_MAGAZINE_NAME:
-      return {...state, ...action.payload};
-    case ActionType.DESELECT_MAGAZINE_ITEM:
-      return {...state, ...action.payload};
-    case ActionType.UPDATE_SEGMENT_FORM_PERIOD:
-      return {...state, ...action.payload};
+    case SET_CURRENT_USER_SELECT:
+      return {'uuid': action.payload};
     default:
       return state;
   }
