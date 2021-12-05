@@ -1,23 +1,7 @@
-/* eslint-disable max-len */
 import React from 'react';
-
-// import * as R from 'ramda';
 
 import EntryScreen, {iRegState} from './entryScreen';
 import Screen, {iState} from './regScreen';
-
-// const SelecterData={
-//   register() {
-//     return R.reject(R.anyPass([R.isNil, R.isEmpty]))({
-//       'birthday': this.state?.birthday,
-//       'email': this.state?.email,
-//       'gender': this.state?.gender||'male',
-//       'name': this.state?.name,
-//       'phone': this.state?.phone,
-//     });
-//   },
-//   'state': initial,
-// };
 
 
 const FormBlock = () => {

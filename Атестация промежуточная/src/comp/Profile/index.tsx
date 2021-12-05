@@ -1,13 +1,19 @@
+/* eslint-disable max-len */
 import React from 'react';
 
+import CardProfile from 'src/comp/CardProfile';
 import {Navigation} from 'src/comp/Navigation';
 import PostCard from 'src/comp/PostScreen';
+import s from 'src/style';
 
 
 export const Profile = () => {
   return (
-    <div className="w-5/6 flex flex-col flex-grow items-center mx-auto">
-      <div className="grid  lg:grid-cols-3  sm:grid-cols-2 gap-1 w-full overflow-y-scroll">
+    <div className={s.card.main}>
+      <div className={s.card.profile}>
+        <CardProfile />
+      </div>
+      <div className={s.card.grid}>
         <PostCard />
       </div>
       <Navigation current={1} page={20} />

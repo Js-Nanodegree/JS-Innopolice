@@ -3,6 +3,7 @@ import React from 'react';
 
 import {Input, Radio} from 'antd';
 import * as R from 'ramda';
+import s from 'src/style';
 
 const text = {
   'birthday': 'birthday',
@@ -92,38 +93,27 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
     return () => setLoading(false);
   }, []);
 
-  const inputStyle = `
-      focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 
-      px-3 bg-gray-300 py-2 shadow-md rounded-md 
-      font-medium text-gray-900 text-md font-semibold placeholder-gray-500`;
-  const container = 'flex flex-col my-2 mb-1';
-  const block = `
-  w-auto lg:w-2/3 mx-auto rounded-xl items-center 
-  bg-white flex-col align-center p-3 flex px-6
-  overflow-y-scroll
-  h-full
-`;
 
   return (
-    <div className="p-5 max-w-1/2 h-full">
-      <div className={block}>
+    <div className={s.modal.block}>
+      <div className={s.container.block}>
         <div className="mt-3 mb-5">
-          <h2 className="text-2xl my-3 font-black">{text.register}</h2>
+          <h2 className={s.text.title}>{text.register}</h2>
         </div>
-        <div className="flex flex-col w-full max-w-md my-3 ">
-          <div className={container}>
+        <div className={s.container.width}>
+          <div className={s.container.reg}>
             <label htmlFor="name">{text.name}</label>
             <Input
-              className={inputStyle}
+              className={s.input.main}
               name="name"
               placeholder={text.placeholderName}
               value={state?.name}
               onChange={onChange}
             />
           </div>
-          <div className={container}>
+          <div className={s.container.reg}>
             <label>{text.gender}</label>
-            <div className="flex items-center my-3">
+            <div className={s.container.radioGroup}>
               <Radio.Group
                 name="gender"
                 value={state?.gender}
@@ -134,40 +124,40 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
               </Radio.Group>
             </div>
           </div>
-          <div className={container}>
+          <div className={s.container.reg}>
             <label htmlFor="birthday">{text.birthday}</label>
             <Input
-              className={inputStyle}
+              className={s.input.main}
               name="birthday"
               placeholder={text.placeholderBirthday}
               value={state?.birthday}
               onChange={onChange}
             />
           </div>
-          <div className={container}>
+          <div className={s.container.reg}>
             <label htmlFor="email">{text.email}</label>
             <Input
-              className={inputStyle}
+              className={s.input.main}
               name="email"
               placeholder={text.placeholderEmail}
               value={state?.email}
               onChange={onChange}
             />
           </div>
-          <div className={container}>
+          <div className={s.container.reg}>
             <label htmlFor="phone">{text.phone}</label>
             <Input
-              className={inputStyle}
+              className={s.input.main}
               name="phone"
               placeholder={text.placeholderPhone}
               value={state?.phone}
               onChange={onChange}
             />
           </div>
-          <div className="flex flex-col">
+          <div className={s.container.error}>
             {error.map((x, key) => (
               <span
-                className="text-pink-500 text-left py-1 font-normal"
+                className={s.text.name}
                 key={key}
               >
                 {errorMessage(x)}
@@ -176,14 +166,14 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
           </div>
           <div className="w-full">
             <button
-              className="w-full p-2 mt-4 bg-black text-base font-medium rounded-md text-white"
+              className={s.button.black}
               disabled={loading}
               onClick={onSuccessSubmit}
             >
               {text.registerButton}
             </button>
             <button
-              className="w-full p-2  text-black text-base font-medium my-3 mt-1"
+              className={s.button.transparent}
               disabled={loading}
               onClick={() => {
                 setState(initial);
