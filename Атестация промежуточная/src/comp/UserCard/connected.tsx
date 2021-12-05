@@ -1,23 +1,19 @@
 import React from 'react';
 
+import * as R from 'ramda';
+
 import CardRender from './Card';
 
+const Connected = ({state}: any) => {
+  console.log(state);
 
-const Connected = () => {
   return (
     <>
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
+      {!R.isEmpty(state) && state.map((x: any, key: number) => (
+        <div key={key}>
+          <CardRender {...x} />
+        </div>
+      ))}
     </>
   );
 };

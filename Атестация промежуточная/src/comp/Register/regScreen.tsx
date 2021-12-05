@@ -2,7 +2,6 @@
 import React from 'react';
 
 import {Input, Radio} from 'antd';
-import * as R from 'ramda';
 import s from 'src/style';
 
 const text = {
@@ -30,6 +29,8 @@ const text = {
 
 export interface iState {
   birthday?: string;
+  uuid?:string;
+  createAt?:string;
   email?: string;
   name?: string;
   phone?: string;
@@ -62,8 +63,8 @@ const errorMessage = (key: string) => {
 };
 
 interface iClickForm {
-  onSubmit: (e: iState) => void,
-  onReject: () => void,
+  onSubmit: (e: iState) => void;
+  onReject: () => void;
 }
 
 const FormBlock = ({onSubmit, onReject}: iClickForm) => {
@@ -81,18 +82,21 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
 
   const onSuccessSubmit = () => {
     setLoading(true);
-    const input = R.reject(R.anyPass([R.isEmpty, R.isNil]))(state);
-    if (Object.keys(input) === Object.keys(state)) {
-      onSubmit(input);
-      return;
-    }
-    setError(R.difference(Object.keys(initial), Object.keys(input)));
+    const data=({
+      state,
+      update() {
+        if (this.state?.gender) {
+          return {...this.state, 'gender': this.state?.gender === text.male};
+        }
+        return {};
+      },
+    }).update();
+    onSubmit(data);
   };
 
   React.useLayoutEffect(() => {
     return () => setLoading(false);
   }, []);
-
 
   return (
     <div className={s.modal.block}>
@@ -119,8 +123,8 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
                 value={state?.gender}
                 onChange={onChange}
               >
-                <Radio value={text.male}>{text.male}</Radio>
-                <Radio value={text.female}>{text.female}</Radio>
+                <Radio value={true}>{text.male}</Radio>
+                <Radio value={false}>{text.female}</Radio>
               </Radio.Group>
             </div>
           </div>
@@ -156,10 +160,7 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
           </div>
           <div className={s.container.error}>
             {error.map((x, key) => (
-              <span
-                className={s.text.name}
-                key={key}
-              >
+              <span className={s.text.name} key={key}>
                 {errorMessage(x)}
               </span>
             ))}
@@ -167,7 +168,7 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
           <div className="w-full">
             <button
               className={s.button.black}
-              disabled={loading}
+              // disabled={loading}
               onClick={onSuccessSubmit}
             >
               {text.registerButton}

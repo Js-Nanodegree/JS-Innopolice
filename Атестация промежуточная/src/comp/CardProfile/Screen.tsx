@@ -19,6 +19,7 @@ export interface iAction {
   logo?: string;
   img: string[];
   phone?: string;
+  uuid?: string;
   setModal: () => void;
 }
 
@@ -35,9 +36,14 @@ const CardProfile = ({
   phone,
   img,
   logo,
+  uuid,
   setModal,
 }: iAction) => {
-  const profile = [
+  const openModal = () => {
+    setModal();
+  };
+
+  console.log([
     {
       'name': 'Дата рождения',
       'title': date,
@@ -54,20 +60,34 @@ const CardProfile = ({
       'name': 'Номер Телефона',
       'title': phone,
     },
-  ];
-
-  const openModal = () => {
-    setModal();
-  };
+  ]);
 
   return (
     <div className={s.profile.wrapper}>
       <div className={s.profile.nameBlock}>
         <p className={s.profile.main}>{text.Client}</p>
         <h2 className={s.profile.title}>{name}</h2>
+        <p className={s.profile.main}>логин - {uuid}</p>
       </div>
       <div className={s.profile.col}>
-        {profile.map((x, key) => (
+        {[
+          {
+            'name': 'Дата рождения',
+            'title': date,
+          },
+          {
+            'name': 'Пол',
+            'title': gender,
+          },
+          {
+            'name': 'E-mail',
+            'title': email,
+          },
+          {
+            'name': 'Номер Телефона',
+            'title': phone,
+          },
+        ].map((x, key) => (
           <div
             className={[s.text.helperSvg, 'items-center'].join(' ')}
             key={key}
@@ -76,7 +96,7 @@ const CardProfile = ({
             <div className="ml-2 flex flex-row">
               <span className={s.text.name}>{x.name}</span>
               <div className={[s.text.name, 'mx-1'].join(' ')}>·</div>
-              <span className={[s.text.hiddenSmall, 'mx-2'].join('')}>
+              <span className={['mx-2', s.text.name].join('')}>
                 {x.title}
               </span>
             </div>
@@ -88,7 +108,7 @@ const CardProfile = ({
           className={[s.button.black, 'text-center shadow'].join(' ')}
           onClick={openModal}
         >
-       {text.Button}
+          {text.Button}
         </div>
       </div>
       <div className={s.profile.imageGroup}>

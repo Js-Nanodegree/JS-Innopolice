@@ -16,7 +16,7 @@ export default {
     overflow-y-scroll
     h-full
     `,
-    'border': 'ring-2 rounded-xl flex flex-col h-full ring-rose-500 shadow-md bg-white',
+    'border': 'ring-2 rounded-xl w-full flex flex-col h-full ring-rose-500 shadow-md bg-white',
     'desc': 'w-full px-3 py-2 pb-3',
     'error': 'flex flex-col',
     'footer': 'p-3 flex flex-row justify-around',

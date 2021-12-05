@@ -4,7 +4,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import s from 'src/style';
 
-const CardRender = () => {
+const CardRender = ({name, birthday, createdAt, img}:any) => {
   // const name = 'Slava';
   // const date = Date.now().toLocaleString();
   // const desc = 'adfs';
@@ -12,21 +12,21 @@ const CardRender = () => {
 
 
   return (
-    <div className={s.render.wrapper}>
+    <div className={[s.render.wrapper, 'w-3/3 flex'].join(' ')}>
       <div className={s.container.border}>
         <Link to="/profile">
           <header className={s.render.header}>
             <div className={s.render.header_name}>
-              <span className={s.text.name}> Slava Yakimov </span>
+              <span className={s.text.name}>{name}</span>
             </div>
           </header>
         </Link>
         <div className={s.container.image}>
-          <div className={s.container.mock}>ds</div>
+          <div className={s.container.mock}>{}</div>
         </div>
-        <div className={s.container.desc}>
+        <div className={[s.container.desc, 'w-full'].join('')}>
           <span className={s.text.desc_light}>
-            Slava da asd ma dma dskcaksd casd a DKAC DA CDK CDA CKAD SCK ASKDC KASD C DAC ASKDC KASCD A DSCAKS
+           {birthday} - {createdAt}
           </span>
         </div>
       </div>
