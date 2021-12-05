@@ -11,16 +11,12 @@ const CardRender = () => {
 
 
   return (
-    <div className="flex mx-auto my-4 p-1">
-      <div className="ring-2 rounded-xl flex flex-col h-full ring-rose-500 shadow-md bg-white">
-        <Link to='user'>
-          <header className="px-3 flex rounded-t-xl flex-row items-center hover:bg-gray-300 py-2">
-            <div>
-              <img className="p-6 bg-gray-800 shadow rounded-2xl"></img>
-            </div>
+    <div className="flex mx-auto my-4 p-1 ">
+      <div className="ring-2 rounded-xl flex flex-col h-full shadow-md bg-white ring-rose-600">
+        <Link to="profile">
+          <header className="px-3 flex rounded-t-xl flex-row items-center hover:bg-gray-100 py-2">
             <div className="flex flex-col text-medium text-gray-700 m-2">
               <span className="text-gray-800 font-semibold"> Slava Yakimov </span>
-              <span className="text-sm text-gray-700"> Slava Yakimov </span>
             </div>
           </header>
         </Link>
