@@ -2,6 +2,7 @@
 import {createClient} from '@supabase/supabase-js';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzODcwODA3NywiZXhwIjoxOTU0Mjg0MDc3fQ.g2GxLW5mVbIqXSpRIRJLgT0r5WsbNFNDhntAyKZPsCo';
 const SUPABASE_URL = 'https://pdhqtgrpzofkpfiaqkjm.supabase.co';
+import {v4 as uuid} from 'uuid';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -16,18 +17,18 @@ export default {
       .eq('uudi', uuid);
 
     if (error) {
-      throw new Error(({error}).toString());
+      return {'data': []};
     }
     return {data};
   },
-  'createPost': async (uuid: string, message: string, title: string, img: any) => {
+  'createPost': async (message: any) => {
     const {data, error} = await supabase
       .from(POST)
       .insert([
-        {img, message, title, uuid},
+        message,
       ]);
     if (error) {
-      throw new Error(({error}).toString());
+      return {'data': []};
     }
     return {data};
   },
@@ -38,7 +39,7 @@ export default {
         .select('*');
 
       if (error) {
-        throw new Error(({error}).toString());
+        return {'data': []};
       }
 
       return {data};
@@ -52,7 +53,7 @@ export default {
       .select('*');
 
     if (error) {
-      throw new Error(({error}).toString());
+      return {'data': []};
     }
 
     return {data};
@@ -64,7 +65,7 @@ export default {
       .eq('uuid', uuid);
 
     if (error) {
-      throw new Error(({error}).toString());
+      return {'data': []};
     }
     return {data};
   },
@@ -74,7 +75,7 @@ export default {
       .select('*');
 
     if (error) {
-      throw new Error(({error}).toString());
+      return {'data': []};
     }
 
     return {data};
@@ -87,9 +88,47 @@ export default {
         client,
       ]);
     if (error) {
-      throw new Error(({error}).toString());
+      return {'data': []};
     }
     return {data};
   },
+  'updateProfile': async (message: any) => {
+    const {data, error} = await supabase
+      .from(CLIENT)
+      .update(message)
+      .match({'uuid': message.uuid});
 
+    if (error) {
+      return {'data': []};
+    }
+    return {data};
+  },
+  async uploadFile(file: File | undefined) {
+    return new Promise((resolve, reject) => {
+      if (file) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          const formData = new FormData();
+          formData.set('name', uuid());
+          formData.set('key', '9117375ef66d133ad2ec9f2f5f5a4b54');
+          formData.set('image', file);
+
+          fetch('https://api.imgbb.com/1/upload', {
+            'body': formData,
+            'method': 'POST',
+          })
+            .then((data) => data.json())
+            .then(({data}: any) => {
+              return resolve(data);
+            })
+            .catch((data: any) => {
+              return reject(data);
+            });
+        };
+      } else {
+        reject(new Error('Invalid data'));
+      }
+    });
+  },
 };

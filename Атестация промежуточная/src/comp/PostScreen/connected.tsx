@@ -5,9 +5,8 @@ import Api from 'src/api';
 
 import CardRender from './Card';
 
-
 const Connected = () => {
-  const [state, setState] = React.useState<any>({});
+  const [state, setState] = React.useState<any>([]);
   // const uuid = useSelector((state: any) => state?.createSegment?.uuid);
 
   React.useEffect(() => {
@@ -22,18 +21,11 @@ const Connected = () => {
 
   return (
     <>
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
-      <CardRender />
+      {state.map((x: any, key: number) => (
+        <div key={key}>
+          <CardRender {...x} />
+        </div>
+      ))}
     </>
   );
 };

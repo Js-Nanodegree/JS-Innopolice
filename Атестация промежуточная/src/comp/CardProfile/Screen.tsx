@@ -20,7 +20,7 @@ export interface iAction {
   img: string[];
   phone?: string;
   uuid?: string;
-  setModal: () => void;
+  showModal: () => void;
 }
 
 const text = {
@@ -38,12 +38,8 @@ const CardProfile = ({
   img,
   logo,
   uuid,
-  setModal,
+  showModal,
 }: iAction) => {
-  const openModal = () => {
-    setModal();
-  };
-
   return (
     <div className={s.profile.wrapper}>
       <div className={s.profile.nameBlock}>
@@ -78,25 +74,31 @@ const CardProfile = ({
             <div className="ml-2 flex flex-row">
               <span className={s.text.name}>{x.name}</span>
               <div className={[s.text.name, 'mx-1'].join(' ')}>·</div>
-              <span className={['mx-2', s.text.name].join('')}>
-                {x.title}
-              </span>
+              <span className={['mx-2', s.text.name].join('')}>{x.title}</span>
             </div>
           </div>
         ))}
       </div>
-      {uuid && <div className="col-start-1 row-start-3 space-y-3 px-4">
+      {uuid && (
         <div
-          className={[s.button.black, 'text-center shadow'].join(' ')}
-          onClick={openModal}
+          className="col-start-1 row-start-3 space-y-3 px-4"
         >
-          {text.Button}
+          <div
+            className={[s.button.black, 'text-center shadow'].join(' ')}
+            onClick={showModal}
+          >
+            {text.Button}
+          </div>
         </div>
-      </div>}
+      )}
       <div className={s.profile.imageGroup}>
         <div className={s.profile.gridImage}>
           <div className={s.profile.imageMainWrapper}>
-            <img alt="" className={[s.profile.mainImage, 'rounded-t-xl'].join(' ')} src={logo} />
+            <img
+              alt=""
+              className={[s.profile.mainImage, 'rounded-t-xl'].join(' ')}
+              src={logo}
+            />
           </div>
           {img.map((x, key) => (
             <div className={s.profile.imageHiddenWrapper} key={key}>

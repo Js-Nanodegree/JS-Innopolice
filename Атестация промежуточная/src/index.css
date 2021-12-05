@@ -12,3 +12,19 @@ body {
   --tw-bg-opacity : 1;
   background-color: white;
 }
+
+.h-310{
+  height:420px;
+  display: flex;
+  overflow: hidden;
+}
+.scroll{
+  height: 420px;
+  display: flex;
+  overflow: scroll;
+}
+
+.max_height{
+  max-height: 300px;
+}
+

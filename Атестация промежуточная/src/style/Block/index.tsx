@@ -16,23 +16,28 @@ export default {
     overflow-y-scroll
     h-full
     `,
-    'border': 'ring-2 rounded-xl w-full flex flex-col h-full ring-rose-500 shadow-md bg-white',
+    'border': 'ring-2 rounded-xl w-full flex flex-col h-310 ring-rose-500 shadow-md bg-white',
+    'borderProfile': 'w-full flex flex-col h-full',
     'desc': 'w-full px-3 py-2 pb-3',
+    'desc_light': 'flex w-auto px-3 py-2 pb-3 rounded-md',
     'error': 'flex flex-col',
     'footer': 'p-3 flex flex-row justify-around',
     'header': 'w-auto p-1 px-2 m-1 hover:bg-purple-400 hover:text-white flex rounded-xl flex justify-center',
-  'image': 'h-64 w-auto',
-    'mock': 'bg-red-700 h-full hover:bg-indigo-600',
+    'image': 'h-full w-full flex',
+    'imageSet': 'flex flex-col h-full',
+    'mock': 'bg-red-700 h-full w-full max_height max-h-120 min-h-80 hover:bg-indigo-600',
     'nav': 'm-2 bg-white rounded-2xl shadow  flex items-center justify-between',
     'radioGroup': 'flex items-center my-3',
-    'reg': 'flex flex-col my-2 mb-1',
+    'reg': 'flex flex-col my-2 mb-1 min-h-40',
     'width': 'flex flex-col w-full max-w-md my-3',
   },
   'image': {
-    'logo': 'p-6 bg-gray-800 shadow rounded-2xl',
-    'logoSmall': 'w-6 h-6 rounded-full mr-2 bg-gray-100',
+    'imageLight': 'w-full h-auto object-cover rounded',
+    'logo': ' w-12 h-12 bg-gray-500 shadow rounded-2xl object-cover ',
+    'logoSmall': 'w-6 h-6 rounded-full mr-2 bg-gray-100 object-cover ',
   },
   'input': {
+    'editable': 'ring-2 ring-gray-300 m-2 p-2 items-center w-auto',
     'main': `
     focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 
     px-3 bg-gray-300 py-2 shadow-md rounded-md 
@@ -59,7 +64,7 @@ export default {
     'card': 'p-2 flex justify-end w-full',
     'header': 'px-3 flex rounded-t-xl flex-row items-center hover:bg-gray-300 py-2',
     'header_name': 'flex flex-col text-medium text-gray-700 mx-2',
-    'wrapper': 'flex mx-auto my-4 p-1',
+    'wrapper': 'flex mx-auto my-1 p-1',
   },
   'text': {
     'date': 'text-sm text-gray-700',
