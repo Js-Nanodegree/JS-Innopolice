@@ -4,8 +4,6 @@ import React from 'react';
 import {Input, Radio} from 'antd';
 import * as R from 'ramda';
 
-import FormRegister from './Form';
-
 const text = {
   'birthday': 'birthday',
   'birthdayError': 'birthdayError',
@@ -107,7 +105,7 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
 `;
 
   return (
-    <FormRegister className="h-20 p-6 relative px-auto">
+    <div className="p-5 max-w-1/2 h-full">
       <div className={block}>
         <div className="mt-3 mb-5">
           <h2 className="text-2xl my-3 font-black">{text.register}</h2>
@@ -197,7 +195,7 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
           </div>
         </div>
       </div>
-    </FormRegister>
+    </div>
   );
 };
 

@@ -1,29 +1,28 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-import * as R from 'ramda';
+// import * as R from 'ramda';
 
 import EntryScreen, {iRegState} from './entryScreen';
-import Screen, {iState, initial} from './regScreen';
+import Screen, {iState} from './regScreen';
 
-const SelecterData={
-  register() {
-    return R.reject(R.anyPass([R.isNil, R.isEmpty]))({
-      'birthday': this.state?.birthday,
-      'email': this.state?.email,
-      'gender': this.state?.gender||'male',
-      'name': this.state?.name,
-      'phone': this.state?.phone,
-    });
-  },
-  'state': initial,
-};
+// const SelecterData={
+//   register() {
+//     return R.reject(R.anyPass([R.isNil, R.isEmpty]))({
+//       'birthday': this.state?.birthday,
+//       'email': this.state?.email,
+//       'gender': this.state?.gender||'male',
+//       'name': this.state?.name,
+//       'phone': this.state?.phone,
+//     });
+//   },
+//   'state': initial,
+// };
 
 
 const FormBlock = () => {
   const [state, setState] = React.useState<boolean>(false);
 
-  console.log(SelecterData);
 
   const createAccount = (e: iState) => {
     console.log(e);

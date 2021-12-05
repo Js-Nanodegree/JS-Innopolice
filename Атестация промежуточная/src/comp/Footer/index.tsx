@@ -19,7 +19,7 @@ export const text = {
   };
 
   return (
-    <Footer className="px-3">
+    <Footer className="p-3 ">
       <div className="md:flex-none">
         <span className="font-bold text-base">Delta World @ 1970-2077</span>
       </div>

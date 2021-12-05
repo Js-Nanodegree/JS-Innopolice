@@ -5,10 +5,10 @@
 @tailwind utilities;
 
 body {
-  margin     : 0px;
-  padding    : 0px;
-  height     : 100vh;
-  font-family: 'Nunito', sans-serif;
-  --tw-bg-opacity: 1;
-  background-color: rgba(156, 163, 175, var(--tw-bg-opacity));
+  margin          : 0px;
+  padding         : 0px;
+  height          : 100vh;
+  font-family     : 'Nunito', sans-serif;
+  --tw-bg-opacity : 1;
+  background-color: white;
 }

@@ -16,7 +16,7 @@ const HeaderBlock = () => {
   const block = 'w-auto p-1 px-2 m-1 hover:bg-purple-400 hover:text-white flex rounded-xl flex justify-center';
 
   return (
-    <Header className="px-3">
+    <Header className="px-3 sticky">
       <div className="hidden sm:inline">
         <span className="font-bold text-2xl">{text.header} </span>
       </div>

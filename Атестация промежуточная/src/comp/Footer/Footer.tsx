@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
  const Footer = styled.div`
-min-height: 12vh;
 background: white;
 display: flex;
+max-height: 200px;
 align-items: center;
 justify-content: space-between;
 
