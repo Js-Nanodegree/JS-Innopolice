@@ -17,9 +17,8 @@ const text = {
 
 const HeaderBlock = () => {
   const location = useLocation();
-  const [state, setState] = React.useState<any>({});
   const dispatch = useDispatch();
-
+  const [state, setState] = React.useState<any>({});
   const auth = useSelector((state: any) => state?.token?.token || null);
 
   React.useLayoutEffect(() => {
