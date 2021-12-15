@@ -2,7 +2,7 @@
 export default {
   'button': {
     'black': 'w-full p-2 mt-4 bg-black text-base font-medium rounded-md text-white',
-    'transparent': 'w-full p-2  text-black text-base font-medium my-3 mt-1',
+    'transparent': 'w-full p-2  text-black text-base font-medium my-3 mt-1 items-center text-center',
   },
   'card': {
     'grid': 'grid  lg:grid-cols-3  sm:grid-cols-2 w-full overflow-y-scroll',

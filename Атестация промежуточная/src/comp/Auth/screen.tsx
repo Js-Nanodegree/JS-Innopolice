@@ -2,37 +2,22 @@
 import React from 'react';
 
 import {Input} from 'antd';
+import {Link} from 'react-router-dom';
+import ROUTER from 'src/router';
 import s from 'src/style';
-
-
-const text = {
-  'id': 'id',
-  'placeholderId': 'placeholderId',
-  'register': 'Авторизоваться',
-  'registerButton': 'Войти',
-  'registerChange': 'Зарегистрировать аккаунт',
-};
+import text from 'src/text';
 
 export interface iRegState {
   id?: string;
 }
 
-const initial = {
-  'id': '123213011-123123-1231231132',
-};
-
 interface iClickForm {
-  onSubmit: (e: iRegState) => void;
-  onReject: () => void;
+  onSubmit: () => void;
+  onChange: (e:any) => void;
+  state:any;
 }
 
-const FormBlock = ({onSubmit, onReject}: iClickForm) => {
-  const [state, setState] = React.useState<iRegState>(initial);
-
-  const onChange = (e: any) => {
-    setState((prev: iRegState) => ({...prev, [e.target.name]: e.target.value}));
-  };
-
+const FormBlock = ({onSubmit, state, onChange}: iClickForm) => {
   return (
     <div className={s.modal.auth}>
       <div className={s.container.block}>
@@ -53,18 +38,18 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
           <div className="w-full">
             <button
               className={s.button.black}
-              onClick={() => onSubmit(state)}
+              onClick={onSubmit}
             >
-              {text.registerButton}
+              {text.authButton}
             </button>
-            <button
+            <div
               className={s.button.transparent}
-              onClick={() => {
-                setState(initial);
-                onReject();
-              }}>
+            >
+              <Link to={ROUTER.REGISTER}>
                 {text.registerChange}
-            </button>
+              </Link>
+
+            </div>
           </div>
         </div>
       </div>

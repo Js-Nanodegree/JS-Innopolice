@@ -1,18 +1,28 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-import EntryScreen, {iRegState} from './entryScreen';
+import EntryScreen, {iRegState} from './screen';
 
 const FormBlock = () => {
-  const [state, setState] = React.useState<boolean>(false);
-  console.log(state);
+  const [state, setState] = React.useState<iRegState>({'id': ''});
 
-  const loginAccount = (e: iRegState) => {
-    console.log(e);
+  const onChange = (e: any) => {
+    setState((prev: iRegState) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const loginAccount = () => {
+    console.log(state);
   };
 
   return (
-    <EntryScreen onReject={() => setState(false)} onSubmit={loginAccount} />
+    <EntryScreen
+      state={state}
+      onChange={onChange}
+      onSubmit={loginAccount}
+    />
   );
 };
 

@@ -2,35 +2,15 @@
 import React from 'react';
 
 import {Input, Radio} from 'antd';
+import {Link} from 'react-router-dom';
+import ROUTER from 'src/router';
 import s from 'src/style';
-
-const text = {
-  'birthday': 'birthday',
-  'birthdayError': 'birthdayError',
-  'email': 'email',
-  'emailError': 'emailError',
-  'female': 'female',
-  'formErrors': 'formErrors',
-  'gender': 'gender',
-  'genderError': 'genderError',
-  'male': 'male',
-  'name': 'name',
-  'nameError': 'nameError',
-  'phone': 'phone',
-  'phoneError': 'phoneError',
-  'placeholderBirthday': 'placeholderBirthday',
-  'placeholderEmail': 'placeholderEmail',
-  'placeholderName': 'placeholderName',
-  'placeholderPhone': 'placeholderPhone',
-  'register': 'Регистрация',
-  'registerButton': 'Зарегистрировать',
-  'registerChange': 'Уже есть аккаунт войти',
-};
+import text from 'src/text';
 
 export interface iState {
   birthday?: string;
-  uuid?:string;
-  createAt?:string;
+  uuid?: string;
+  createAt?: string;
   email?: string;
   name?: string;
   phone?: string;
@@ -63,41 +43,15 @@ const errorMessage = (key: string) => {
 };
 
 interface iClickForm {
-  onSubmit: (e: iState) => void;
+  onSubmit: () => void;
   onReject: () => void;
+  onChange: (e: any) => void;
+  state: any;
+  loading: boolean;
+  error: any;
 }
 
-const FormBlock = ({onSubmit, onReject}: iClickForm) => {
-  const [state, setState] = React.useState<iState>(initial);
-  const [loading, setLoading] = React.useState<boolean>(false);
-  const [error, setError] = React.useState<string[]>([]);
-
-  const onChange = (e: any) => {
-    setState((prev: iState) => ({...prev, [e.target.name]: e.target.value}));
-  };
-
-  React.useLayoutEffect(() => {
-    setError([]);
-  }, [state]);
-
-  const onSuccessSubmit = () => {
-    setLoading(true);
-    const data=({
-      state,
-      update() {
-        if (this.state?.gender) {
-          return {...this.state, 'gender': this.state?.gender === text.male};
-        }
-        return {};
-      },
-    }).update();
-    onSubmit(data);
-  };
-
-  React.useLayoutEffect(() => {
-    return () => setLoading(false);
-  }, []);
-
+const FormBlock = ({onSubmit, onChange, state, onReject, error}: iClickForm) => {
   return (
     <div className={s.modal.block}>
       <div className={s.container.block}>
@@ -159,7 +113,7 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
             />
           </div>
           <div className={s.container.error}>
-            {error.map((x, key) => (
+            {error.map((x: any, key: number) => (
               <span className={s.text.name} key={key}>
                 {errorMessage(x)}
               </span>
@@ -168,21 +122,19 @@ const FormBlock = ({onSubmit, onReject}: iClickForm) => {
           <div className="w-full">
             <button
               className={s.button.black}
-              // disabled={loading}
-              onClick={onSuccessSubmit}
+              onClick={onSubmit}
             >
               {text.registerButton}
             </button>
-            <button
-              className={s.button.transparent}
-              disabled={loading}
-              onClick={() => {
-                setState(initial);
-                onReject();
-              }}
+            <div
+              className={`${s.button.transparent} w-full items-center`}
             >
-              {text.registerChange}
-            </button>
+              <Link
+                to={ROUTER.AUTH}
+              >
+                {text.authChange}
+              </Link>
+            </div>
           </div>
         </div>
       </div>
