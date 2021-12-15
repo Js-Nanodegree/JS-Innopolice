@@ -6,12 +6,7 @@ import {setLocalStorage} from 'src/store/reducer/token';
 
 import Screen, {iState} from './regScreen';
 
-// interface iResponse {
-//   data:iState
-// }
-
 const FormBlock = () => {
-  const [state, setState] = React.useState<iState>({});
   const auth = useSelector((state: any) => state?.token?.token || null);
   const dispatch = useDispatch();
 
@@ -19,7 +14,6 @@ const FormBlock = () => {
     try {
       Api.register(e).then(({data}: any) => {
         const profile = data[0];
-        setState(profile);
         dispatch(setLocalStorage(profile?.uuid));
       });
     } catch (err) {
@@ -28,13 +22,13 @@ const FormBlock = () => {
   };
 
   if (auth) {
-    return (<div />);
+    return <div />;
   }
-
-  console.log(state);
-
   return (
-    <Screen onReject={() => console.log(true)} onSubmit={createAccount} />
+    <Screen
+      onReject={() => dispatch(setLocalStorage())}
+      onSubmit={createAccount}
+    />
   );
 };
 

@@ -71,7 +71,7 @@ export default {
     'desc_light': 'text-xs flex-wrap text-gray-500',
     'helperSvg': 'flex items-center text-sm font-medium my-5 sm:mt-2 sm:mb-4',
     'hiddenSmall': 'sm:hidden md:inline',
-    'name': 'text-gray-800 font-semibold',
+    'name': 'text-gray-800 font-bold hover:text-pink-900 w-40 text-center uppercase',
     'navActionText': 'text-sm flex text-center justify-center items-center text-pink-500 font-bold p-1 px-2 border-l-2 border-gray-200',
     'navText': 'text-sm flex text-center justify-center items-center font-bold p-1 px-2 border-l-2 border-gray-200',
     'title': 'text-2xl my-3 font-black',

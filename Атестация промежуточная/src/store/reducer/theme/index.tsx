@@ -11,7 +11,6 @@ const SET_THEME_FONT = 'SET_THEME_FONT';
 export type typeColor = {
   BLACK: 'BLACK',
   WHITE: 'WHITE',
-  GRAY: 'GRAY'
 }
 
 export const updateGlobalTheme = (theme: string) => ({

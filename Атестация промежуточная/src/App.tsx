@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Auth from 'src/comp/Auth';
 import FooterBlock from 'src/comp/Footer';
 import HeaderBlock from 'src/comp/Header';
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Router>
+      <BrowserRouter>
         <div className={s.view.main}>
           <HeaderBlock />
           <div className={s.view.content}>
@@ -34,8 +34,7 @@ function App() {
           </div>
           <FooterBlock />
         </div>
-      </Router>
-
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
