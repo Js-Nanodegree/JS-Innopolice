@@ -5,13 +5,10 @@ import {useSelector} from 'react-redux';
 import ModalPost from 'src/comp/ModalPost';
 import PostCard from 'src/comp/PostScreen';
 import s from 'src/style';
+import text from 'src/text';
 
 import {Navigation} from '../Navigation';
 
-
-const text = {
-  'createPost': 'Написать пост',
-};
 
 export const Post = () => {
   const [isModalVisible, setIsModalVisible] = React.useState(false);
