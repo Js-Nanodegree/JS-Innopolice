@@ -2,13 +2,7 @@ import React from 'react';
 
 import {Switch} from 'antd';
 import s from 'src/style';
-
-export const text = {
-  'BLACK': 'Темная тема',
-  'Title': 'Delta World @ 1970-2077',
-  'WHITE': 'Cветлая тема',
-
-};
+import text from 'src/text';
 
 interface iFooter{
   onChange:()=>void;

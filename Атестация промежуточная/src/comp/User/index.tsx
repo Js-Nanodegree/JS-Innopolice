@@ -1,5 +1,6 @@
 import React from 'react';
 
+import * as R from 'ramda';
 import Api from 'src/api';
 import PostCard from 'src/comp/UserCard';
 import s from 'src/style';
@@ -19,8 +20,11 @@ export const User = () => {
     }
   }, []);
 
-  console.log(state);
-
+  if (R.isEmpty(state)) {
+    return (
+      <div/>
+    );
+  }
 
   return (
     <div className={s.card.main}>

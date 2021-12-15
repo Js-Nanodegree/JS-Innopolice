@@ -4,7 +4,7 @@ import React from 'react';
 import {Input, Radio} from 'antd';
 import * as R from 'ramda';
 
-import FormRegister from './Form';
+import FormRegister from './styled';
 
 const text = {
   'birthday': 'birthday',

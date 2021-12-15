@@ -9,11 +9,9 @@ import text from 'src/text';
 
 import {Navigation} from '../Navigation';
 
-
 export const Post = () => {
-  const [isModalVisible, setIsModalVisible] = React.useState(false);
-
-  const auth = useSelector((state: any) => state?.token?.token || null);
+  const [isModalVisible, setIsModalVisible] = React.useState<boolean>(false);
+  const auth: string | null = useSelector((state: any) => state?.token?.token || null);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -22,6 +20,12 @@ export const Post = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
+  if (!auth) {
+    return (
+      <div/>
+    );
+  }
 
   return (
     <div className={s.card.main}>
