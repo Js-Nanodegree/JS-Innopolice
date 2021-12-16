@@ -1,27 +1,31 @@
+/* eslint-disable import/order */
 /* eslint-disable max-len */
 import {createClient} from '@supabase/supabase-js';
+import {v4 as uuid} from 'uuid';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzODcwODA3NywiZXhwIjoxOTU0Mjg0MDc3fQ.g2GxLW5mVbIqXSpRIRJLgT0r5WsbNFNDhntAyKZPsCo';
 const SUPABASE_URL = 'https://pdhqtgrpzofkpfiaqkjm.supabase.co';
-import {v4 as uuid} from 'uuid';
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-
-const CLIENT = 'Client';
+const CLIENT = 'Client_duplicate';
 const POST = 'Post';
 
 export default {
   'auth': async (uuid: string) => {
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
     const {data, error} = await supabase
       .from(CLIENT)
       .select('*')
-      .eq('uudi', uuid);
+      .eq('uuid', uuid);
+
 
     if (error) {
-      return {'data': []};
+      return {'data': [], error};
     }
+
     return {data};
   },
   'createPost': async (message: any) => {
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
     const {data, error} = await supabase
       .from(POST)
       .insert([
@@ -33,6 +37,8 @@ export default {
     return {data};
   },
   'getAllPost': async () => {
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
     try {
       const {data, error} = await supabase
         .from(POST)
@@ -48,6 +54,8 @@ export default {
     }
   },
   'getAllUser': async () => {
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
     const {data, error} = await supabase
       .from(CLIENT)
       .select('*');
@@ -59,6 +67,8 @@ export default {
     return {data};
   },
   'getCurrentUser': async (uuid: string) => {
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
     const {data, error} = await supabase
       .from(CLIENT)
       .select('*')
@@ -70,6 +80,8 @@ export default {
     return {data};
   },
   'getCurrentUserPost': async (uuid: string) => {
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
     const {data, error} = await supabase
       .from(POST)
       .select('*');
@@ -81,18 +93,21 @@ export default {
     return {data};
   },
   'register': async (state: any) => {
-    const client = state;
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
     const {data, error} = await supabase
       .from(CLIENT)
       .insert([
-        client,
+        state,
       ]);
+
     if (error) {
-      return {'data': []};
+      return {'data': [], error};
     }
     return {data};
   },
   'updateProfile': async (message: any) => {
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
     const {data, error} = await supabase
       .from(CLIENT)
       .update(message)

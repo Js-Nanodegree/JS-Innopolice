@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-import {Input, Radio} from 'antd';
+import {DatePicker, Input, Radio} from 'antd';
+import moment from 'moment';
 import {Link} from 'react-router-dom';
 import ROUTER from 'src/router';
 import s from 'src/style';
@@ -24,24 +25,6 @@ export const initial = {
   'name': '',
   'phone': '',
 };
-
-const errorMessage = (key: string) => {
-  switch (key) {
-    case 'name':
-      return text.nameError;
-    case 'phone':
-      return text.phoneError;
-    case 'email':
-      return text.emailError;
-    case 'gender':
-      return text.genderError;
-    case 'birthday':
-      return text.birthdayError;
-    default:
-      return '';
-  }
-};
-
 interface iClickForm {
   onSubmit: () => void;
   onReject: () => void;
@@ -52,6 +35,10 @@ interface iClickForm {
 }
 
 const FormBlock = ({onSubmit, onChange, state, onReject, error}: iClickForm) => {
+  const onChangeCalendar = (e: any) => {
+    onChange({'target': {'name': 'birthday', 'value': moment(e).format('DD.MM.YYYY')}});
+  };
+
   return (
     <div className={s.modal.block}>
       <div className={s.container.block}>
@@ -84,12 +71,15 @@ const FormBlock = ({onSubmit, onChange, state, onReject, error}: iClickForm) => 
           </div>
           <div className={s.container.reg}>
             <label htmlFor="birthday">{text.birthday}</label>
-            <Input
+
+            <DatePicker
               className={s.input.main}
-              name="birthday"
+              format={'DD.MM.YYYY'}
+              picker="week"
               placeholder={text.placeholderBirthday}
-              value={state?.birthday}
-              onChange={onChange}
+              value={moment(state?.birthday, 'DD.MM.YYYY')}
+              onChange={onChangeCalendar}
+
             />
           </div>
           <div className={s.container.reg}>
@@ -112,13 +102,11 @@ const FormBlock = ({onSubmit, onChange, state, onReject, error}: iClickForm) => 
               onChange={onChange}
             />
           </div>
-          <div className={s.container.error}>
-            {error.map((x: any, key: number) => (
-              <span className={s.text.name} key={key}>
-                {errorMessage(x)}
-              </span>
-            ))}
-          </div>
+            {error.message && (
+              <div>
+                {error.message}
+              </div>
+            )}
           <div className="w-full">
             <button
               className={s.button.black}

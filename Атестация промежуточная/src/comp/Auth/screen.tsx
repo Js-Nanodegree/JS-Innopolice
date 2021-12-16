@@ -8,21 +8,22 @@ import s from 'src/style';
 import text from 'src/text';
 
 export interface iRegState {
-  id?: string;
+  id: string;
 }
 
 interface iClickForm {
   onSubmit: () => void;
   onChange: (e:any) => void;
   state:any;
+  error:any;
 }
 
-const FormBlock = ({onSubmit, state, onChange}: iClickForm) => {
+const FormBlock = ({onSubmit, state, onChange, error}: iClickForm) => {
   return (
     <div className={s.modal.auth}>
       <div className={s.container.block}>
         <div className="mt-3">
-          <h2 className={s.text.title}>{text.register}</h2>
+          <h2 className={s.text.title}>{text.authorization}</h2>
         </div>
         <div className={s.container.width}>
           <div className={s.container.reg}>
@@ -35,6 +36,9 @@ const FormBlock = ({onSubmit, state, onChange}: iClickForm) => {
               onChange={onChange}
             />
           </div>
+          {error?.message &&(
+            <div>{error.message}</div>
+          )}
           <div className="w-full">
             <button
               className={s.button.black}
