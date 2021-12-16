@@ -1,5 +1,11 @@
 /* eslint-disable max-len */
 export default {
+  'block': {
+    'select': 'flex w-36 items-center hover:bg-gray-200 shadow my-1 rounded-xl',
+    'title': 'flex w-36 items-center hover:bg-gray-200 rounded-xl',
+    'titleActive': 'flex justify-center text-xl sm:text-black sm:hidden',
+    'titleMid': 'hidden sm:flex sm:w-full sm:justify-center text-xl sm:text-black',
+  },
   'button': {
     'black': 'w-full p-2 mt-4 bg-black text-base font-medium rounded-md text-white',
     'transparent': 'w-full p-2  text-black text-base font-medium my-3 mt-1 items-center text-center',
@@ -34,7 +40,7 @@ export default {
   'image': {
     'imageLight': 'w-full h-auto object-cover rounded',
     'logo': ' w-12 h-12 bg-gray-500 shadow rounded-2xl object-cover ',
-    'logoSmall': 'w-6 h-6 rounded-full mr-2 bg-gray-100 object-cover ',
+    'logoSmall': 'w-6 h-6 rounded-full bg-gray-100 object-cover ',
   },
   'input': {
     'editable': 'ring-2 ring-gray-300 m-2 p-2 items-center w-auto',
@@ -72,6 +78,7 @@ export default {
     'helperSvg': 'flex items-center text-sm font-medium my-5 sm:mt-2 sm:mb-4',
     'hiddenSmall': 'sm:hidden md:inline',
     'name': 'text-gray-800 font-bold hover:text-pink-900 w-40 text-center uppercase',
+    'nameProfile': 'text-gray-800 font-bold py-1 hover:text-pink-900 text-left uppercase',
     'navActionText': 'text-sm flex text-center justify-center items-center text-pink-500 font-bold p-1 px-2 border-l-2 border-gray-200',
     'navText': 'text-sm flex text-center justify-center items-center font-bold p-1 px-2 border-l-2 border-gray-200',
     'title': 'text-2xl my-3 font-black',

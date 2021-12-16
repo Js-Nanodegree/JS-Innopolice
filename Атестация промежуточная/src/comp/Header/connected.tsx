@@ -10,7 +10,7 @@ import {Screen} from './Screen';
 const HeaderBlock = () => {
   const dispatch = useDispatch();
   const [state, setState] = React.useState<any>({});
-  const auth = useSelector((state: any) => state?.token?.token || null);
+  const auth = useSelector((state: any) => state?.token.token || null);
 
   React.useLayoutEffect(() => {
     if (auth) {
@@ -26,7 +26,7 @@ const HeaderBlock = () => {
 
   return (
     <Screen
-      auth={auth}
+      auth={state}
       setProfile={() => dispatch(selectProfileUser(state?.uuid))}
       onReject={() => dispatch(rejectLocalStorage())}
     />

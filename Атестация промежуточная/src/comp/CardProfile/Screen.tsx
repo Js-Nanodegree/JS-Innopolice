@@ -4,7 +4,7 @@ import React from 'react';
 import s from 'src/style';
 import text from 'src/text';
 
-import Bookmark from './bookmark.svg';
+import Bookmark from './bookmark';
 
 export interface iAction {
   name?: string;
@@ -29,6 +29,25 @@ const CardProfile = ({
   uuid,
   showModal,
 }: iAction) => {
+  const arrProfile=[
+    {
+      'name': text.birthday,
+      'title': date,
+    },
+    {
+      'name': text.gender,
+      'title': gender,
+    },
+    {
+      'name': text.email,
+      'title': email,
+    },
+    {
+      'name': text.mobile,
+      'title': phone,
+    },
+  ];
+
   return (
     <div className={s.profile.wrapper}>
       <div className={s.profile.nameBlock}>
@@ -36,37 +55,17 @@ const CardProfile = ({
         <h2 className={s.profile.title}>{name}</h2>
         {uuid && <p className={s.profile.main}>логин - {uuid}</p>}
       </div>
-      <div className={s.profile.col}>
-        {[
-          {
-            'name': text.birthday,
-            'title': date,
-          },
-          {
-            'name': text.gender,
-            'title': gender,
-          },
-          {
-            'name': text.email,
-            'title': email,
-          },
-          {
-            'name': text.mobile,
-            'title': phone,
-          },
-        ].map((x, key) => (
-          <div
-            className={[s.text.helperSvg, 'items-center'].join(' ')}
-            key={key}
-          >
-            <Bookmark />
-            <div className="ml-2 flex flex-row">
-              <span className={s.text.name}>{x.name}</span>
-              <div className={[s.text.name, 'mx-1'].join(' ')}>·</div>
-              <span className={['mx-2', s.text.name].join('')}>{x.title}</span>
-            </div>
-          </div>
-        ))}
+      <div className="mx-4 mt-4">
+      {arrProfile.map((x:any, key:number) => (
+        <div
+          className="flex flex-row items-center"
+          key={key}
+        >
+          <Bookmark />
+          <span className={[s.text.nameProfile, 'w-40 ml-2'].join(' ')}>{x.name}</span>
+          <span className={s.text.nameProfile}>{x.title}</span>
+        </div>
+      ))}
       </div>
       {uuid && (
         <div

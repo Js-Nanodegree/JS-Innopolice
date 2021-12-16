@@ -11,7 +11,7 @@ import Screen from './Screen';
 const Connecter = () => {
   const [state, setState] = React.useState<any>({});
   const token = useSelector((state: any) => state?.token?.token);
-  const uuid = useSelector((state: any) => state?.createSegment?.uuid);
+  const uuid = useSelector((state: any) => state);
   const [isModalVisible, setIsModalVisible] = React.useState(false);
 
   const auth = useSelector((state: any) => state?.token?.token || null);
@@ -23,11 +23,11 @@ const Connecter = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-
+console.log(auth);
 
   React.useEffect(() => {
     try {
-      Api.getCurrentUser(uuid).then(({data}: any) => setState(data?.[0] || {}));
+      Api.getCurrentUser(auth).then(({data}: any) => setState(data?.[0] || {}));
     } catch (e) {
       console.log(e);
     }
