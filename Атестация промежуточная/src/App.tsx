@@ -27,9 +27,10 @@ function App() {
               <Route element={<Post />} path={ROUTER.HOME} />
               <Route element={<Register />} path={ROUTER.REGISTER} />
               <Route element={<Auth />} path={ROUTER.AUTH} />
-              <Route element={<Post />} path={ROUTER.POST} />
+              <Route element={<Post />} path={ROUTER.POST} />s
               <Route element={<User />} path={ROUTER.USER} />
               <Route element={<Profile />} path={ROUTER.PROFILE} />
+              <Route element={<Profile />} path={ROUTER.PROFILE+'/:id'} />
             </Routes>
           </div>
           <FooterBlock />

@@ -2,6 +2,9 @@
 import React from 'react';
 
 import {useSelector} from 'react-redux';
+import {
+  useLocation,
+} from 'react-router-dom';
 import Api from 'src/api';
 import ModalPost from 'src/comp/ModalProfile';
 
@@ -10,10 +13,8 @@ import Screen from './Screen';
 
 const Connecter = () => {
   const [state, setState] = React.useState<any>({});
-  const token = useSelector((state: any) => state?.token?.token);
-  const uuid = useSelector((state: any) => state);
   const [isModalVisible, setIsModalVisible] = React.useState(false);
-
+  const location = useLocation();
   const auth = useSelector((state: any) => state?.token?.token || null);
 
   const showModal = () => {
@@ -23,15 +24,18 @@ const Connecter = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-console.log(auth);
+  const user = location.pathname.split('/')?.[2] || auth;
 
   React.useEffect(() => {
+    console.log({user});
     try {
-      Api.getCurrentUser(auth).then(({data}: any) => setState(data?.[0] || {}));
+      Api.getCurrentUser(user).then(({data}: any) => setState(data?.[0] || {}));
     } catch (e) {
       console.log(e);
     }
-  }, [auth]);
+  }, [user]);
+
+  console.log(auth === state.uuid && state?.uuid);
 
   return (
     <>
@@ -44,7 +48,7 @@ console.log(auth);
         name={state?.name}
         phone={state?.phone}
         showModal={showModal}
-        uuid={token === uuid && state?.uuid}
+        uuid={auth === state.uuid && state?.uuid}
       />
       <ModalPost
         auth={auth}

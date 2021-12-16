@@ -5,19 +5,17 @@ import Api from 'src/api';
 
 import CardRender from './Card';
 
-const Connected = () => {
+const Connected = ({update}: any) => {
   const [state, setState] = React.useState<any>([]);
-  // const uuid = useSelector((state: any) => state?.createSegment?.uuid);
 
   React.useEffect(() => {
     try {
-      Api.getAllPost().then(({data}: any) => setState(data));
+      Api.getAllPost().then(({data}: any) => setState(data.reverse()));
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  }, [update]);
 
-  console.log(state);
 
   return (
     <>

@@ -19,11 +19,25 @@ const ModalPost = ({
     'message': '',
     'profile': {'name': '', 'uuid': ''},
   });
+  const [error, setError]=React.useState<any>({});
+
   const ref = React.useRef('');
 
   const handleOk = () => {
-    Api.createPost({...state, 'message': ref.current}).then((data) => {
-      console.log(data);
+    if (!ref.current) {
+      setError({'message': 'message not found'});
+      return;
+    }
+    if (!state?.profile.uuid) {
+      setError({'message': 'userNotFound'});
+      return;
+    }
+    Api.createPost({...state, 'message': ref.current}).then(({error}:any) => {
+      if (error) {
+        setError(error);
+        return;
+      }
+
       setIsModalVisible(false);
     });
   };
@@ -51,6 +65,7 @@ const ModalPost = ({
 
   return (
     <ScreenModal
+    error={error}
       fileChange={fileChange}
       handleCancel={handleCancel}
       handleOk={handleOk}

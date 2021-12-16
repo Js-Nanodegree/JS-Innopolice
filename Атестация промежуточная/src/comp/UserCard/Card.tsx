@@ -3,6 +3,7 @@ import React from 'react';
 
 import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
+import ROUTER from 'src/router';
 import {selectProfileUser} from 'src/store/reducer/createSegment';
 import s from 'src/style';
 
@@ -13,7 +14,7 @@ const CardRender = ({name, birthday, createdAt, uuid, img}: any) => {
     <div className={[s.render.wrapper, 'w-3/3 flex'].join(' ')}>
       <div className={s.container.border}>
         <div onClick={() => dispatch(selectProfileUser(uuid))}>
-        <Link to="/profile">
+        <Link to={`${ROUTER.PROFILE}/${uuid}`}>
           <header className={s.render.header}>
             <div className={s.render.header_name}>
               <span className={s.text.name}>{name}</span>

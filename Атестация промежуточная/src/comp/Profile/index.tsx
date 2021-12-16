@@ -6,7 +6,6 @@ import {Navigation} from 'src/comp/Navigation';
 import PostCard from 'src/comp/PostScreen';
 import s from 'src/style';
 
-
 export const Profile = () => {
   return (
     <div className={s.card.main}>

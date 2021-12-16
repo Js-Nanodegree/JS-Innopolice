@@ -9,13 +9,11 @@ import s from 'src/style';
 const CardRender = ({image, profile, message}: any) => {
   const dispatch = useDispatch();
 
-  console.log({image});
-
   return (
     <div className={s.render.wrapper}>
       <div className={s.container.border}>
         <div onClick={()=>dispatch(selectProfileUser(profile?.uuid))}>
-        <Link to='/profile'>
+        <Link to={`/profile/${profile.uuid}`}>
           <header className={s.render.header}>
             <img className={s.image.logo} src={image?.url}></img>
             <div className={s.render.header_name}>

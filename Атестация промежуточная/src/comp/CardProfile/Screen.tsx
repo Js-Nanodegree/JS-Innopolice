@@ -55,7 +55,7 @@ const CardProfile = ({
         <h2 className={s.profile.title}>{name}</h2>
         {uuid && <p className={s.profile.main}>логин - {uuid}</p>}
       </div>
-      <div className="mx-4 mt-4">
+      <div className={s.profile.col}>
       {arrProfile.map((x:any, key:number) => (
         <div
           className="flex flex-row items-center"

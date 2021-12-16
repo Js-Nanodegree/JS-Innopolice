@@ -5,7 +5,7 @@ import {v4 as uuid} from 'uuid';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzODcwODA3NywiZXhwIjoxOTU0Mjg0MDc3fQ.g2GxLW5mVbIqXSpRIRJLgT0r5WsbNFNDhntAyKZPsCo';
 const SUPABASE_URL = 'https://pdhqtgrpzofkpfiaqkjm.supabase.co';
 
-const CLIENT = 'Client_duplicate';
+const CLIENT = 'Client';
 const POST = 'Post';
 
 export default {

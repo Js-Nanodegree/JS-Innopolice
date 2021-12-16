@@ -27,6 +27,8 @@ export const Post = () => {
     );
   }
 
+  console.log(isModalVisible);
+
   return (
     <div className={s.card.main}>
       <div className={s.render.card}>
@@ -35,7 +37,7 @@ export const Post = () => {
         </button>
       </div>
       <div className={s.card.grid}>
-        <PostCard />
+        <PostCard update={isModalVisible} />
       </div>
       <Navigation current={1} page={20} />
       <ModalPost

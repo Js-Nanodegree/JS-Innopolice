@@ -43,7 +43,7 @@ export default {
     'logoSmall': 'w-6 h-6 rounded-full bg-gray-100 object-cover ',
   },
   'input': {
-    'editable': 'ring-2 ring-gray-300 m-2 p-2 items-center w-auto',
+    'editable': 'ring-2 ring-gray-300 my-4 p-2 items-center w-auto',
     'main': `
     focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 
     px-3 bg-gray-300 py-2 shadow-md rounded-md 
@@ -68,9 +68,9 @@ export default {
   },
   'render': {
     'card': 'p-2 flex justify-end w-full',
-    'header': 'px-3 flex rounded-t-xl flex-row items-center hover:bg-gray-300 py-2',
+    'header': 'px-3 flex rounded-t-xl flex-row items-center py-2',
     'header_name': 'flex flex-col text-medium text-gray-700 mx-2',
-    'wrapper': 'flex mx-auto my-1 p-1',
+    'wrapper': 'flex my-1 p-1',
   },
   'text': {
     'date': 'text-sm text-gray-700',
