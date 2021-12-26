@@ -1,6 +1,6 @@
 import * as iType from "../interface";
 import { searchRefChannel } from "./getChannel";
-import { resultString } from "./resultString";
+import { resultString } from "../helpers/resultString";
 
 export async function getAllAppealChannel({ appeal, client, workshop, workspaceType }: any) {
   if (workspaceType === iType.ENUM_TYPE.APPEAL && appeal) {

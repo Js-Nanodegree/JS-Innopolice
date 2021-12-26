@@ -1,7 +1,7 @@
 import * as iType from "../interface";
 import * as R from 'ramda';
 import { searchRefChannel } from "./getChannel";
-import { resultString } from "./resultString";
+import { resultString } from "../helpers/resultString";
 
 
 export async function getAllGarageChannel({ workshop, workspaceType,members }: iType.iMessage) {

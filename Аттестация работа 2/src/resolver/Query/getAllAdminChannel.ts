@@ -1,6 +1,6 @@
 import * as iType from "../interface";
 import { searchRefChannel } from "./getChannel";
-import { resultString } from "./resultString";
+import { resultString } from "../helpers/resultString";
 
 export async function getAllAdminChannel({ client, workspaceType=iType.ENUM_TYPE.ADMIN }: iType.iMessage) {
   if (!client?.id) {

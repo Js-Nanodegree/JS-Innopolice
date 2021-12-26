@@ -1,0 +1,87 @@
+<mxfile host="65bd71144e">
+    <diagram id="3LDDnPICrQuTynQGV9Zf" name="Страница 1">
+        <mxGraphModel dx="823" dy="518" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="6" value="Vertical Tree Layout" style="swimlane;startSize=20;horizontal=1;childLayout=treeLayout;horizontalTree=0;resizable=0;containerType=tree;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="40" width="583" height="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="client" style="whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="196.32" y="40" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="AUTH" style="whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="20" y="130" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=0;" edge="1" parent="6" source="7" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="REGISTER" style="whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="160" y="130" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=0;" edge="1" parent="6" source="7" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=0;" edge="1" target="27" source="10" parent="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="88.32" y="130" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="CREATE USER" style="whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="160" y="220" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=0;" edge="1" target="29" source="8" parent="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="88.32" y="130" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="CHECK USER" style="whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="20" y="220" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=0;" edge="1" target="33" source="7" parent="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="88.32" y="130" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="33" value="CHANNEL" style="whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="372.64" y="130" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=0;" edge="1" target="35" source="33" parent="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="228.32" y="130" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="CREATE CHANNEL" style="whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="372.64" y="220" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=0;" edge="1" target="43" source="35" parent="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="368.32" y="220" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="43" value="CHECKUSER 1" style="whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="281.84" y="310" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=0;" edge="1" target="45" source="35" parent="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="368.32" y="310" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="6" source="45" target="47">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="CHECKUSER2" style="whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="463.43999999999994" y="310" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=0;" edge="1" target="47" source="43" parent="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="564.3199999999999" y="310" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="CREATE UNIQ ID CHANNEL AND BUILD META SEARCH" style="whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="229.83999999999997" y="400" width="204" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

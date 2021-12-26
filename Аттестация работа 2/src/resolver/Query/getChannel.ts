@@ -10,7 +10,6 @@ import * as iType from "../interface";
 import { getAllAdminChannel } from "./getAllAdminChannel";
 import { getAllAppealChannel } from "./getAllAppealChannel";
 import { getAllGarageChannel } from "./getAllGarageChannel";
-import * as R from 'ramda'
 
 export const searchRefChannel = (
   keySearch: any,
@@ -47,21 +46,26 @@ export const Query = {
     }
     throw new Error("Params not Valid");
   },
-  async profileChannel({ channel }: any) {
-    if (!channel) {
+  async profileChannel({ idChannel }: any) {
+    if (!idChannel) {
       throw new Error("Channel not Found");
     }
-    const commentsRef = searchRefChannel("idChannel", channel, process.env.ROUTE_CHANNEL||"");
+    
+    const commentsRef = searchRefChannel("idChannel", idChannel, process.env.ROUTE_CHANNEL || "");
     return new Promise((resolve, reject) => {
-      onValue(commentsRef, (snapshot: any) => {
-        snapshot.forEach((element: any) => {
-          console.log(
-            { ...element.val(), uuid: snapshot.key })
-          resolve({ ...element.val()})
-        })
-      }, {
-        onlyOnce: true
-      });
+      try {
+        onValue(commentsRef, (snapshot: any) => {
+          snapshot.forEach((element: any) => {
+            console.log(
+              { ...element.val(), uuid: snapshot.key })
+            resolve({ ...element.val() })
+          })
+        }, {
+          onlyOnce: true
+        });
+      } catch (e:any) {
+          throw new Error(e)
+      }
     });
-  },
+  }
 };

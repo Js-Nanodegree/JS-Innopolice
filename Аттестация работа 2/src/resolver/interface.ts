@@ -1,8 +1,8 @@
 export const enum ENUM_TYPE {
-  ADMIN="ADMIN",
-  GARAGE="GARAGE",
-  APPEAL="APPEAL",
-  CLIENT="CLIENT",
+  ADMIN = "ADMIN",
+  GARAGE = "GARAGE",
+  APPEAL = "APPEAL",
+  CLIENT = "CLIENT",
 };
 export interface iClientName {
   first?: String;
@@ -10,29 +10,33 @@ export interface iClientName {
   middle?: String;
 }
 export interface iWorkShopInput {
-  id: String;
+  id: number;
 }
 export interface iClient {
-  id: string;
+  id: number;
   phone?: String;
   name?: iClientName;
 }
- export interface iMessage {
+export interface iMessage {
   appeal?: number;
   workshop?: [iWorkShopInput];
   workspaceType: ENUM_TYPE;
   client?: iClient;
-  workShopInput?:any;
-  members?:any;
-  custom?:string;
+  workShopInput?: any;
+  members?: any;
+  custom?: string;
 }
-export interface iInput{
-  input:iClientEntry
+export interface iInput {
+  input: iClientEntry
 }
 
-export interface  iClientEntry extends iMessage{
-  [x: string]: any;
-  appealId: any;
-  channel?:String
-  message?:String
+export interface iClientEntry extends iMessage {
+  // [x: string]: any;
+  // appealId: any;
+  idChannel: string
+  message: string
+  sharedMessage?: {
+    id?: string,
+    message?: string
+  }
 }

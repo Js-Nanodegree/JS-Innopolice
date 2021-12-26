@@ -1,71 +1,16 @@
+import 'dotenv/config'
 import { Query } from "./Query/getChannel";
 import { deleteChannel } from "./Mutation/deleteChannel";
-import { createChannel } from "./Mutation/createChannel";
 import { sendMessage } from "./sendMessage";
 import * as iType from "./interface";
 import * as R from "ramda";
-import { CLIENT, GARAGES_ZENCAR } from "../request/schema";
-import { request, GraphQLClient } from "graphql-request";
-const endpoint = process.env.ZENCAR || "";
 import { CreateChannel } from "./channel";
+import API from '../api'
 import {
   getDatabase,
   onChildAdded, push, ref, set
 } from "firebase/database";
-
-
-export const requestShedule = async (context: any, input: any) => {
-  try {
-    const client = new GraphQLClient(endpoint, {
-      headers: { authorization: context?.req?.req?.headers?.authorization },
-    });
-    const request = await client.request(CLIENT);
-
-    console.log(request)
-
-    const data = {
-      profileId: request.profile?.id,
-      members: [request.profile, ...input.members],
-      typename: request.profile.__typename
-    };
-
-    return data;
-  } catch (e) {
-    return null
-  }
-};
-
-export const GaragesMount = async ({ workshop, custom }: any) => {
-  const client = new GraphQLClient(endpoint, { headers: {} });
-
-  let input: any = {};
-  if (custom?.status) {
-    input = R.assocPath(["status", "eq"], custom)(input);
-  }
-  if (!R.isEmpty(workshop?.id)) {
-    input = R.assocPath(["id", "in"], workshop)(input);
-  }
-  const request = await client.request(GARAGES_ZENCAR, {
-    where: input,
-    paginate: { page: 1, limit: 0 }
-  });
-  let garages: any[] = [];
-  let members: any[] = [];
-
-
-  request?.garages?.items?.forEach((x: any) => {
-    x?.employees?.map((x: any) => members.push({ id: x?.id.toString(), ...x }));
-    garages.push({
-      id: x?.id || "",
-      name: x?.name || "",
-      address: R.values([...x?.address]).join(" "),
-      phone: x?.phone || "",
-    });
-  });
-
-  return { workshop: garages, members };
-};
-
+import modifySelect from "./helpers/modifySelect";
 
 export const resolvers = {
   Query: {
@@ -73,40 +18,37 @@ export const resolvers = {
       root: any,
       { input }: iType.iInput,
       context: any,
-      info: any
     ) => {
-      const data = await requestShedule(context, input);
-
-      return await Query.currentChannel({ ...input, ...data });
+      const ctx = context?.req?.req?.headers?.authorization
+      const variables = modifySelect(input, ctx)
+      return await Query.currentChannel(variables);
     },
     appealChannel: async (
       root: any,
       { input }: iType.iInput,
       context: any,
-      info: any
     ) => {
-      const data = await requestShedule(context, input);
-      return await Query.currentChannel({ ...input, ...data });
+      const ctx = context?.req?.req?.headers?.authorization
+      const variables = modifySelect(input, ctx)
+      return await Query.currentChannel(variables);
     },
     adminChannel: async (
       root: any,
       { input }: iType.iInput,
       context: any,
-      info: any
     ) => {
-      const data = await requestShedule(context, input);
-
-      return await Query.currentChannel({ ...input, ...data });
+      const ctx = context?.req?.req?.headers?.authorization
+      const variables = modifySelect(input, ctx)
+      return await Query.currentChannel(variables);
     },
     garageChannel: async (
       root: any,
       { input }: iType.iInput,
       context: any,
-      info: any
     ) => {
-      const data = await requestShedule(context, input);
-
-      return await Query.currentChannel({ ...input, ...data });
+      const ctx = context?.req?.req?.headers?.authorization
+      const variables = modifySelect(input, ctx)
+      return await Query.currentChannel(variables);
     },
   },
   Mutation: {
@@ -114,11 +56,9 @@ export const resolvers = {
       root: any,
       { input }: iType.iInput,
       context: any,
-      info: any
     ) => {
       const data: any = await CreateChannel(context, input)
-      console.log(data)
-      if(!data) return
+      if (!data) return
       return new Promise(async (resolve, reject) => {
         const db = getDatabase();
         const commentsRef = ref(db, process.env.ROUTE_CHANNEL);
@@ -134,7 +74,7 @@ export const resolvers = {
           }
         });
 
-        await set(newPostRef, R.reject(R.anyPass([R.isEmpty,R.isNil]))(data)).catch((error) => {
+        await set(newPostRef, R.reject(R.anyPass([R.isEmpty, R.isNil]))(data)).catch((error) => {
           reject(error);
         });
       });
@@ -145,19 +85,20 @@ export const resolvers = {
       context: any,
       info: any
     ) => {
-      const data: any = await requestShedule(context, input);
-
-      return sendMessage({ ...input, ...data, write: data?.clientId });
+      const ctx: any = context?.req?.req?.headers?.authorization
+      return sendMessage({ ...input, ctx });
     },
     deleteChannel: async (
       root: any,
       { input }: iType.iInput,
       context: any,
-      info: any
     ) => {
-      const data = await requestShedule(context, input);
-
-      return await deleteChannel({ ...input, ...data });
+      const ctx = context?.req?.req?.headers?.authorization
+      const profile=await API.CLIENT_CHECKER(ctx)
+      if(profile?.profileId){
+        return await deleteChannel({ idChannel: input?.idChannel });
+      }
+      throw new Error('User not denied')
     },
   },
 };

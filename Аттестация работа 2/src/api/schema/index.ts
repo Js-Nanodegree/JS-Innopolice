@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-export const GARAGES_ZENCAR=gql`
+export const GARAGES_ZEN_CAR=gql`
 query(
   $where: WhereGarageInput
   $order: OrderGarageInput
